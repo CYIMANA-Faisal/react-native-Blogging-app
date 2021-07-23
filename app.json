@@ -1,6 +1,6 @@
 {
   "expo": {
-    "name": "bloging",
+    "name": "blogging App",
     "slug": "bloging",
     "version": "1.0.0",
     "orientation": "portrait",
@@ -20,6 +20,7 @@
       "supportsTablet": true
     },
     "android": {
+      "package": "cyimanafaisal.com",
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon1.png",
         "backgroundColor": "#0F9D58"
