@@ -36,13 +36,12 @@ const styles = StyleSheet.create({
     },
     readButton: {
         backgroundColor: 'white',
+        marginBottom: 10
     }
 });
 
 const Posts = ({ navigation }) => {
-    const posts = useContext(PostsContext);
-    console.log(posts);
-
+    const {posts, deletePost} = useContext(PostsContext);
     return ( 
         <View style={styles.mainScreenContainer}>
             <ScrollView style={styles.scrollView}>
@@ -56,6 +55,12 @@ const Posts = ({ navigation }) => {
                                 </Paragraph>
                                 <Button style={styles.readButton} color="#0F9D58" onPress={() => {navigation.navigate("ReadPost", {id: post.id})}}>
                                     Read the post
+                                </Button>
+                                <Button style={styles.readButton} color="red" onPress={() => {deletePost(post.id)}}>
+                                    Delete Post
+                                </Button>
+                                <Button style={styles.readButton} color="#0F9D58" onPress={() => {navigation.navigate("ReadPost", {id: post.id})}}>
+                                    Edit Post
                                 </Button>
                             </View>
                         )

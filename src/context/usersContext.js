@@ -10,7 +10,7 @@ export const UsersProvider = ( props ) => {
 
     }
     const deleteUser = (id) => {
-        
+        setUsers(users.filter(user => parseInt(user.id) !== parseInt(id)))
     }
     const editUser = () => {
         

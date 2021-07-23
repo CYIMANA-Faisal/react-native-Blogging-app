@@ -1,6 +1,6 @@
 import React, {useState, useContext} from 'react';
 import { ScrollView, View, Text, StyleSheet } from "react-native";
-import { Paragraph, Title } from 'react-native-paper';
+import { Paragraph, Title, Card } from 'react-native-paper';
 import { UsersContext } from '../context/usersContext';
 import { Button } from 'react-native-paper';
 import { List } from 'react-native-paper';
@@ -27,7 +27,7 @@ const styles = StyleSheet.create({
 });
 
 const Users = () => {
-    const {users} = useContext(UsersContext)
+    const {users, deleteUser} = useContext(UsersContext)
     return ( 
         <View style={styles.mainScreenContainer}>
             <ScrollView style={styles.scrollView}>
@@ -35,17 +35,20 @@ const Users = () => {
                 {
                     users.map((user) => {
                         return (
-                            <List.Accordion title={user.username} id={user.id}>
-                                 <List.Item title={user.email} />
-                                 <View style={styles.actions}>
-                                    <Button >
-                                        <Icon name="trash" size={30} color="red" />
+                            <Card key={user.id}>
+                                <Card.Content>
+                                <Title>{user.name}</Title>
+                                <Paragraph>{user.email}</Paragraph>
+                                </Card.Content>
+                                <Card.Actions>
+                                    <Button onPress={() => {deleteUser(user.id)}}>
+                                        <Icon name="trash" size={30} color="red" /><Text style={{color:"black"}}>Delete</Text>
                                     </Button>
                                     <Button >
-                                        <Icon name="pencil" size={30} color="#0F9D58" />
+                                        <Icon name="pencil" size={30} color="#0F9D58" /> <Text style={{color:"black"}}>Edit</Text>
                                     </Button>
-                                </View>
-                            </List.Accordion>
+                                </Card.Actions>
+                            </Card>
                         )
                     })
                 }

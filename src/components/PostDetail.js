@@ -30,19 +30,11 @@ const styles = StyleSheet.create({
 const PostDetail =  ({ navigation, route }) => {
     const {comments} = useContext(CommentsContext)
     const postId = route.params.id;
-    const posts = useContext(PostsContext);
+    const {posts} = useContext(PostsContext);
     const [post, setPost] = useState(posts.filter( post => post.id === postId));
     return ( 
         <View style={styles.mainScreenContainer}>
             <ScrollView>
-                <View style={styles.actions}>
-                    <Button >
-                        <Icon name="trash" size={30} color="red" />
-                    </Button>
-                    <Button >
-                        <Icon name="pencil" size={30} color="#0F9D58" />
-                    </Button>
-                </View>
                 <Title>{post[0].title}</Title>
                 <Subheading>
                     {post[0].body}

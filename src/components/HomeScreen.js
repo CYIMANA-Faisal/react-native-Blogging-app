@@ -37,7 +37,7 @@ const styles = StyleSheet.create({
 });
 
 const HomeScreen = ({ navigation }) => {
-    const posts = useContext(PostsContext);
+    const {posts} = useContext(PostsContext);
     const {users} = useContext(UsersContext);
     return ( 
         <View style={styles.mainScreenContainer}>
